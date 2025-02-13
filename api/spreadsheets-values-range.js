@@ -7,7 +7,8 @@ module.exports = async (req, res) => {
         const range = 'Sheet1!A1:D10'; // 替换为你的范围
 
         const response = await axios.get(
-            `https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values/${range}`,
+            // `https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values/${range}`,
+			`https://open.feishu.cn/open-apis/sheets/v3/spreadsheets/${spreadsheetToken}/sheets/query`,
             {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
