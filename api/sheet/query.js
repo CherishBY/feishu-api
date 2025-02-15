@@ -6,12 +6,13 @@ export async (req, res) => {
 		// 接口 headers
 		const accessToken = req.headers['Authorization'];
 		// 接口 参数
-		const range = req.query.range;
+		// const range = req.query.range;
 		const spreadSheetToken = req.query.spreadSheetToken
 		
 		const response = await axios.get(`https://open.feishu.cn/open-apis/sheets/v3/spreadsheets/${spreadSheetToken}/sheets/query`, {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				'Authorization': `Bearer ${accessToken}`,
+				'Content-Type': 'application/json; charset=utf-8'
 			}
 		});
 		
