@@ -4,7 +4,7 @@ export async (req, res) => {
 	try {
 		console.log(req.headers);
 		// 接口 headers
-		const accessToken = req.headers['Authorization'];
+        const accessToken = req.query.accessToken;
 		// 接口 参数
 		// const range = req.query.range;
 		const spreadSheetToken = req.query.spreadSheetToken
