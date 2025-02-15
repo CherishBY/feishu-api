@@ -8,13 +8,12 @@ module.exports = async (req, res) => {
 		const ranges = req.query.ranges;
 
         const response = await axios.get(
-			`https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values_batch_get`,
+			`https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values_batch_get?ranges=${ranges}&valueRenderOption=ToString&dateTimeRenderOption=FormattedString`,
             {
 				mode:'no-cors',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
-                },
-				data: {ranges: ranges}
+                }
             }
         );
 
