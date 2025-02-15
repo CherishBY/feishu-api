@@ -6,6 +6,7 @@ export async (req, res) => {
 		const spreadSheetToken = req.query.spreadSheetToken
 		
 		const response = await axios.get(`https://open.feishu.cn/open-apis/sheets/v3/spreadsheets/${spreadSheetToken}/sheets/query`, {
+			mode: 'no-cors',
 			headers: {
 				'Authorization': `Bearer ${accessToken}`
 			}
