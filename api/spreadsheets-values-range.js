@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
             // `https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values/${range}`,
 			`https://open.feishu.cn/open-apis/sheets/v3/spreadsheets/${spreadsheetToken}/sheets/query`,
             {
+				mode:'no-cors',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 }
