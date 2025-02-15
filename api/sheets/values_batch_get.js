@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 },
-				body: JSON.stringify(ranges)
+				data: {ranges: ranges}
             }
         );
 
