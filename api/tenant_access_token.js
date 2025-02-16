@@ -7,8 +7,8 @@ export default async function handler(req, res) {
       // const appId = process.env.FEISHU_APP_ID;
       // const appSecret = process.env.FEISHU_APP_SECRET;
       const body = req.body;
-      const VITE_APP_ID=cli_a726d69f89b15013
-      const VITE_APP_SECRET=IYWLrVKqguwwI8tMStpWgeIzgjkFZnsw
+      const VITE_APP_ID='cli_a726d69f89b15013'
+      const VITE_APP_SECRET='IYWLrVKqguwwI8tMStpWgeIzgjkFZnsw'
 
       // 调用飞书接口获取 tenant_access_token
       const response = await fetch('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/', {
