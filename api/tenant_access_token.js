@@ -12,10 +12,7 @@ module.exports = async (req, res) => {
     const response = await axios({
       url: 'https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/',
       method: 'post',
-      data: {
-        app_id: appId,
-        app_secret: appSecret,
-      }
+      data: req.body
     });
 
     res.status(200).json(response.data);
