@@ -7,17 +7,27 @@ module.exports = async (req, res) => {
         const spreadsheetToken = req.query.spreadsheetToken; // 电子表格 Token
         const ranges = req.query.ranges;
 
-        const response = await axios.get(
-            `https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values_batch_get?ranges=${ranges}`,
-            {
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                },
-                params: JSON.stringify({
-                    ranges: ranges
-                })
-            }
-        );
+        // const response = await axios.get(
+        //     `https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values_batch_get?ranges=${ranges}`,
+        //     {
+        //         headers: {
+        //             'Authorization': `Bearer ${accessToken}`
+        //         },
+        //         data: JSON.stringify({
+        //             ranges: ranges
+        //         })
+        //     }
+        // );
+        const response = await axios({
+            url: `https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values_batch_get?ranges=${ranges}`,
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
+            data: JSON.stringify({
+                ranges: ranges
+            })
+        });
 
         res.status(200).json(response.data);
     } catch (error) {
