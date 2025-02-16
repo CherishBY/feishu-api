@@ -3,8 +3,8 @@ const axios = require('axios');
 
 module.exports = async (req, res) => {
   try {
-    const appID = req.headers['app_id'];
-    const appSecret = req.headers['app_secret'];
+    const appID = req.query.app_id;
+    const appSecret = req.query.app_secret;
 
     const response = await axios.get(`https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/`,
       {
