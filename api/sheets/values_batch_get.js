@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 },
-                data: JSON.stringify({
+                params: JSON.stringify({
                     ranges: ranges
                 })
             }
