@@ -8,12 +8,12 @@ export default async function handler(req, res) {
       // const appSecret = process.env.FEISHU_APP_SECRET;
       const body = req.body;
 
-      if (!appId || !appSecret) {
-        return res.status(400).json({
-          success: false,
-          message: 'App ID or App Secret is missing in environment variables.'
-        });
-      }
+      // if (!appId || !appSecret) {
+      //   return res.status(400).json({
+      //     success: false,
+      //     message: 'App ID or App Secret is missing in environment variables.'
+      //   });
+      // }
 
       // 调用飞书接口获取 tenant_access_token
       const response = await fetch('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/', {
