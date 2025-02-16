@@ -7,15 +7,21 @@ module.exports = async (req, res) => {
       app_secret: 'IYWLrVKqguwwI8tMStpWgeIzgjkFZnsw',
     };
 
-    const response = await axios.post('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/',
-      {
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: data
-      }
-    );
+    // const response = await axios.post('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/',
+    //   {
+    //     mode: 'no-cors',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     data: data
+    //   }
+    // );
+
+    const response = await axios({
+      url: 'https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/',
+      method: 'post',
+      data: data
+    });
 
     res.status(200).json(response.data);
   } catch (error) {
