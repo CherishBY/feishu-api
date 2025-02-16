@@ -1,6 +1,6 @@
 // 获取tenant access token
 const axios = require('axios');
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   try {
     const data = {
       api_id: 'cli_a726d69f89b15013',
