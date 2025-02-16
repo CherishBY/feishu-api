@@ -24,9 +24,9 @@ module.exports = async (req, res) => {
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             },
-            data: JSON.stringify({
+            params: {
                 ranges: ranges
-            })
+            }
         });
 
         res.status(200).json(response.data);
