@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       {
         mode: 'no-cors',
         headers: {
-          'Authorization': `Bearer ${accessToken}`
+          'Content-Type': 'application/json'
         }
       }
     );
