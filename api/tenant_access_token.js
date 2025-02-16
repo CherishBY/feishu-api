@@ -7,13 +7,8 @@ export default async function handler(req, res) {
       // const appId = process.env.FEISHU_APP_ID;
       // const appSecret = process.env.FEISHU_APP_SECRET;
       const body = req.body;
-
-      // if (!appId || !appSecret) {
-      //   return res.status(400).json({
-      //     success: false,
-      //     message: 'App ID or App Secret is missing in environment variables.'
-      //   });
-      // }
+      const VITE_APP_ID=cli_a726d69f89b15013
+      const VITE_APP_SECRET=IYWLrVKqguwwI8tMStpWgeIzgjkFZnsw
 
       // 调用飞书接口获取 tenant_access_token
       const response = await fetch('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/', {
@@ -21,9 +16,13 @@ export default async function handler(req, res) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body
+        body: JSON.stringify({
+          app_id: VITE_APP_ID,
+          app_secret: VITE_APP_SECRET
+        })
       });
 
+      console.log('>>>> response', response);
       const data = await response.json();
 
       // 检查飞书接口返回的状态码
