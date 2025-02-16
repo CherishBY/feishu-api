@@ -4,8 +4,8 @@ const axios = require('axios');
 
 module.exports = async (req, res) => {
     try {
-        const accessToken = req.query.accessToken;
-        const spreadsheetToken = req.query.spreadsheetToken; // 电子表格 Token
+        const accessToken = req.queryStringParameter.accessToken;
+        const spreadsheetToken = req.queryStringParameter.spreadsheetToken; // 电子表格 Token
 
         const response = await axios({
             url: `https://open.feishu.cn/open-apis/sheets/v3/spreadsheets/${spreadsheetToken}/sheets/query`,
