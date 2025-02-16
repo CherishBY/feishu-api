@@ -4,16 +4,16 @@ const axios = require('axios');
 
 module.exports = async (req, res) => {
     try {
-        const accessToken = req.query.accessToken;
+        const headers = req.headers;
         const spreadsheetToken = req.query.spreadsheetToken; // 电子表格 Token
+
+        // const params = req.queryStringParameters || {};
 
         const response = await axios.get(
 			`https://open.feishu.cn/open-apis/sheets/v3/spreadsheets/${spreadsheetToken}/sheets/query`,
             {
 				mode:'no-cors',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`
-                }
+                headers: headers
             }
         );
 
