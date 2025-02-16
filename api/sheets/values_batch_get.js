@@ -5,18 +5,18 @@ module.exports = async (req, res) => {
     try {
         const accessToken = req.query.accessToken;
         const spreadsheetToken = req.query.spreadsheetToken; // 电子表格 Token
-		const ranges = req.query.ranges;
+        const ranges = req.query.ranges;
 
         const response = await axios.get(
-			`https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values_batch_get?ranges=${ranges}&valueRenderOption=ToString&dateTimeRenderOption=FormattedString`,
+            `https://open.feishu.cn/open-apis/sheets/v2/spreadsheets/${spreadsheetToken}/values_batch_get?ranges=${ranges}&valueRenderOption=ToString&dateTimeRenderOption=FormattedString`,
             {
-				mode:'no-cors',
+                mode: 'no-cors',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 },
-				data: JSON.stringify({
-					ranges: ranges
-				})
+                data: JSON.stringify({
+                    ranges: ranges
+                })
             }
         );
 
