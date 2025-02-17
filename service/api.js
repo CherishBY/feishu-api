@@ -1,10 +1,29 @@
-const request = require('./axios');
-const URL = 'https://open.feishu.cn/open-apis';
+const axios = require('axios');
 
-class API {
-  async getToken(config) {
-    return request.post({...config, url: `${URL}/auth/v3/tenant_access_token/internal`});
+const request = (options) => {
+  const baseOptions = {
+    timeout: 10000,
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    }
+  };
+  const baseConfig = Object.assign({}, baseOptions, options);
+  const service = axios.create(baseConfig);
+
+  return {
+    async get(config) {
+      return service({
+        ...config,
+        method: 'get'
+      });
+    },
+    async post(config) {
+      return service({
+        ...config,
+        method: 'post'
+      });
+    }
   }
-}
+};
 
-export default new API();
+export default request();

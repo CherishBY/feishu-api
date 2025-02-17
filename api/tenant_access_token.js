@@ -1,5 +1,6 @@
 // 获取tenant access token
-const API = require('../service/api');
+const request = require('../service/api');
+const apiConfig = require('../service/contants');
 
 module.exports = async (req, res) => {
   try {
@@ -9,7 +10,10 @@ module.exports = async (req, res) => {
     //   data: req.body
     // });
 
-    const response = await API.getToken({data: req.body});
+    const response = await request.post({
+      url: `${apiConfig}/auth/v3/tenant_access_token/internal/`,
+      data: req.body
+    });
 
     res.status(200).json(response.data);
   } catch (error) {
