@@ -11,13 +11,13 @@ const request = (options) => {
   const service = axios.create(config);
 
   return {
-    get(config) {
+    async get(config) {
       return service({
         ...config,
         method: 'get'
       });
     },
-    post(config) {
+    async post(config) {
       return service({
         ...config,
         method: 'post'
