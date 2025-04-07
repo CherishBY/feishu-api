@@ -2,7 +2,6 @@
   "name": "feishu-api",
   "version": "1.0.0",
   "description": "主要用于请求在个人项目中出现跨域的情况",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
