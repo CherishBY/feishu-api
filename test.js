@@ -7,8 +7,8 @@ const mockEvent = {
 };
 
 // 模拟环境变量
-process.env.FEISHU_APP_ID = 'cli_a726d69f89b15013';
-process.env.FEISHU_APP_SECRET = 'IYWLrVKqguwwI8tMStpWgeIzgjkFZnsw';
+process.env.APP_ID = 'cli_a726d69f89b15013';
+process.env.APP_SECRET = 'IYWLrVKqguwwI8tMStpWgeIzgjkFZnsw';
 
 // 导入你的函数
 const { handler } = require('./netlify/functions/tenant_access_token');

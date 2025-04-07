@@ -28,8 +28,8 @@ exports.handler = async function(event, context) {
   // }
 
   // 从环境变量获取凭证
-  const APP_ID = process.env.FEISHU_APP_ID;
-  const APP_SECRET = process.env.FEISHU_APP_SECRET;
+  const APP_ID = process.env.APP_ID;
+  const APP_SECRET = process.env.APP_SECRET;
 
   if (!APP_ID || !APP_SECRET) {
     return {
