@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>飞书API测试</title>
+</head>
+<body>
+  <h1>飞书API代理测试</h1>
+  <button id="getToken">获取Token</button>
+  <pre id="result"></pre>
+
+  <script>
+    document.getElementById('getToken').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/.netlify/functions/tenant_access_token', {
+          method: 'POST'
+        });
+        const data = await response.json();
+        document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('result').textContent = '错误: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html>
