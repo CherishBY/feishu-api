@@ -1,4 +1,5 @@
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
   // 阻止直接通过GET方法访问
@@ -13,18 +14,18 @@ exports.handler = async function(event, context) {
   }
 
   // 验证请求来源（可选但推荐）
-  const allowedOrigins = ['https://your-domain.netlify.app'];
-  const origin = event.headers['origin'] || event.headers['Origin'];
+  // const allowedOrigins = ['https://your-domain.netlify.app'];
+  // const origin = event.headers['origin'] || event.headers['Origin'];
 
-  if (!allowedOrigins.includes(origin)) {
-    return {
-      statusCode: 403,
-      body: JSON.stringify({
-        error: 'Forbidden',
-        msg: '非法请求源'
-      })
-    };
-  }
+  // if (!allowedOrigins.includes(origin)) {
+  //   return {
+  //     statusCode: 403,
+  //     body: JSON.stringify({
+  //       error: 'Forbidden',
+  //       msg: '非法请求源'
+  //     })
+  //   };
+  // }
 
   // 从环境变量获取凭证
   const APP_ID = process.env.FEISHU_APP_ID;
