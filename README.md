@@ -10,3 +10,7 @@
 
 ## 部署地址
 - https://app.netlify.com/sites/feishu-api/deploys/
+
+## 部署出错
+1. Dependencies installation error
+- 解决方法：添加node版本信息
