@@ -3,9 +3,9 @@
   functions = "netlify/functions"
   publish = "."
 
-[build.environment]
-  NODE_VERSION = "16"
-  NPM_FLAGS = "--production=false"
+# [build.environment]
+  # NODE_VERSION = "18"
+  # NPM_FLAGS = "--production=false"
 
 [[headers]]
   for = "/*"
