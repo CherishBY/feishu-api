@@ -1,7 +1,7 @@
 [build]
   command = "echo 'No build required'"
   functions = "netlify/functions"
-  publish = "public"
+  publish = "."
 
 [build.environment]
   NODE_VERSION = "16"
@@ -15,8 +15,8 @@
     X-Content-Type-Options = "nosniff"
     Content-Security-Policy = "default-src 'self'; script-src 'self' https://trusted.cdn.com"
 
-[functions]
+# [functions]
   # 设置函数超时时间
-  timeout = 10
+  # timeout = 10
   # 日志保留设置
-  node_bundler = "esbuild"
+  # node_bundler = "esbuild"
