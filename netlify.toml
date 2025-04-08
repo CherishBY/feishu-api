@@ -1,11 +1,22 @@
 [build]
-  command = "echo 'No build needed'"
+  command = "echo 'No build required'"
   functions = "netlify/functions"
-  publish = "."
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "16"
+  NPM_FLAGS = "--production=false"
 
 [[headers]]
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://trusted.cdn.com"
+
+[functions]
+  # 设置函数超时时间
+  timeout = 10
+  # 日志保留设置
+  node_bundler = "esbuild"
