@@ -1,4 +1,4 @@
-const api = require('../../../api');
+const api = require('../../api');
 
 exports.handler = async (event, context) => {
   // 只允许POST请求
