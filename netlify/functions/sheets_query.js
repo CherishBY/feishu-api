@@ -5,10 +5,11 @@ exports.handler = async (event, context) => {
   if (!api.isPOST(event)) {
     return api.methodError();
   }
+  console.log('>>>> event', event);
 
   try {
     // 解析请求体
-    const requestBody = JSON.parse(event.body || event?.params || event?.data);
+    const requestBody = api.parseParams(event);
     const { spreadsheetToken, accessToken } = requestBody;
 
     // 验证参数

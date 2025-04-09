@@ -5,6 +5,11 @@ class Api {
   get baseURL() {
     return 'https://open.feishu.cn/open-apis';
   }
+  parseParams(event) {
+    let params = event?.data || event?.params || event?.body;
+    if (typeof params === 'string') return JSON.parse(params);
+    return params;
+  }
   async post(path, body) {
     return await fetch(this.baseURL+path, {
       method: 'POST',

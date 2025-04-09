@@ -3,6 +3,11 @@ process.env.APP_ID = '';
 process.env.APP_SECRET = '';
 token = 't-g10448mrYN7FZO22NVKCLOJTXO6I2NKNDNUEHQNO';
 
+const data = {
+  spreadsheetToken: '',
+  accessToken: token,
+  ranges: 'YopQ1y!A1:C6'
+}
 
 // 模拟Netlify函数事件对象
 const mockEvent = {
@@ -10,15 +15,12 @@ const mockEvent = {
   headers: {
     origin: 'http://localhost'
   },
-  body: JSON.stringify({
-    spreadsheetToken: '',
-    accessToken: token,
-    ranges: 'YopQ1y!A1:C6'
-  })
+  data: data,
+  // body: JSON.stringify()
 };
 
 // 导入你的函数
-const { handler } = require('./netlify/functions/sheets/values_batch_get');
+const { handler } = require('./netlify/functions/sheets_query');
 
 // 执行测试
 (async () => {
