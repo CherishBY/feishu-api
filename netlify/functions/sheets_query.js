@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
 
   try {
     // 解析请求体
-    const requestBody = JSON.parse(event.body);
+    const requestBody = JSON.parse(event.body || event?.params || event?.data);
     const { spreadsheetToken, accessToken } = requestBody;
 
     // 验证参数
