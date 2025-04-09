@@ -6,7 +6,7 @@ class Api {
     return 'https://open.feishu.cn/open-apis';
   }
   parseParams(event) {
-    let params = event?.data || event?.params || event?.body;
+    let params = event?.queryStringParameters||event?.data || event?.params || event?.body;
     if (typeof params === 'string') return JSON.parse(params);
     return params;
   }

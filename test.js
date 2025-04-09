@@ -15,7 +15,7 @@ const mockEvent = {
   headers: {
     origin: 'http://localhost'
   },
-  data: data,
+  params: data,
   // body: JSON.stringify()
 };
 
