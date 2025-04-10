@@ -9,7 +9,6 @@ exports.handler = async (event, context) => {
   try {
     // 解析请求体
     const params = api.parseParams(event);
-    console.log('>>>> params', params);
     const { spreadsheetToken, accessToken } = params;
 
     // 验证参数
