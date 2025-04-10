@@ -5,12 +5,12 @@ exports.handler = async (event, context) => {
   if (!api.isPOST(event)) {
     return api.methodError();
   }
-  console.log('>>>> event', event);
 
   try {
     // 解析请求体
-    const requestBody = api.parseParams(event);
-    const { spreadsheetToken, accessToken } = requestBody;
+    const params = api.parseParams(event);
+    console.log('>>>> params', params);
+    const { spreadsheetToken, accessToken } = params;
 
     // 验证参数
     if (!spreadsheetToken || !accessToken) {

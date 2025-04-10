@@ -1,14 +1,32 @@
 const fetch = require('node-fetch');
 
+const headers = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*'
+};
+
 class Api {
   constructor() {}
   get baseURL() {
     return 'https://open.feishu.cn/open-apis';
   }
   parseParams(event) {
-    let params = event?.queryStringParameters||event?.data || event?.params || event?.body;
-    if (typeof params === 'string') return JSON.parse(params);
-    return params;
+    // 1. 解析请求方法和内容
+    const { body, queryStringParameters } = event;
+
+    // 2. 统一处理请求数据（兼容Fetch和Axios）
+    let requestData = {};
+    try {
+      requestData = body ? JSON.parse(body) : {};
+    } catch (e) {
+      // 如果不是JSON格式，保持原始body
+      requestData = body || {};
+    }
+
+    return {
+      ...requestData,
+      ...queryStringParameters
+    };
   }
   async post(path, body) {
     return await fetch(this.baseURL+path, {
@@ -34,17 +52,14 @@ class Api {
   success(data) {
     return {
       statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST'
-      },
+      headers,
       body: JSON.stringify(data)
     };
   }
   methodError() {
     return {
       statusCode: 405,
+      headers,
       body: JSON.stringify({
         error: 'Method Not Allowed',
         details: '请求方式不合法，请使用post'
@@ -52,12 +67,13 @@ class Api {
     };
   }
   paramsError(...params) {
-    const str = params.join(' and ');
+    const str = params.join(' 和 ');
     return {
       statusCode: 400,
+      headers,
       body: JSON.stringify({
-        error: 'Missing required parameters',
-        details: `Both ${str} are required`
+        error: '缺少必要参数',
+        details: `需要提供${str}`
       })
     };
   }
@@ -71,6 +87,7 @@ class Api {
   catchError(error) {
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({
         error: '函数内部错误',
         details: error.message

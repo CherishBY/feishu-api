@@ -4,7 +4,7 @@ process.env.APP_SECRET = '';
 token = 't-g10448mrYN7FZO22NVKCLOJTXO6I2NKNDNUEHQNO';
 
 const data = {
-  spreadsheetToken: '',
+  spreadsheetToken: '111',
   accessToken: token,
   ranges: 'YopQ1y!A1:C6'
 }
@@ -15,8 +15,8 @@ const mockEvent = {
   headers: {
     origin: 'http://localhost'
   },
-  params: data,
-  // body: JSON.stringify()
+  queryStringParameters: data,
+  // body: JSON.stringify(data)
 };
 
 // 导入你的函数
